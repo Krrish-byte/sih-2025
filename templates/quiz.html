@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass - Find Your Perfect Career Path</title>
+
+</head>
+<body>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/quiz.css">
+        <!-- Header -->
+    <header class="header" style="background: white; backdrop-filter: none;">
+        <nav class="nav">
+            <div id="google_translate_element" align="left"></div>
+<script type="text/javascript" src="/static/js/main.js">
+ 
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <div class="logo">EduPath</div>
+            <ul class="nav-menu" height="15%">
+                <li class="nav-item" onclick="redirectTohome()"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item" onclick="redirectTosignin()"><a href="#" class="nav-link">Take Quiz</a></li>
+                <li class="nav-item" onclick="redirectTocourse()"><a href="#" class="nav-link">Explore Courses</a></li>
+                <li class="nav-item" onclick="redirectTocolleges()"><a href="#" class="nav-link">Find Colleges</a></li>
+                <li class="nav-item" onclick="redirectTotimeline()"><a href="#" class="nav-link">Timeline Tracker</a></li>
+                <li class="nav-item" onclick="redirectToctc()"><a href="#" class="nav-link">C2C mapping</a></li>
+                <li class="nav-item" onclick="redirectTostories()"><a href="#" class="nav-link">Future impact Stories</a></li>
+                <li class="nav-item" onclick="redirectToaboutus()"><a href="#" class="nav-link">About Us</a></li>
+                <li class="nav-item" onclick="redirectTocontact()"><a href="#" class="nav-link">Contact Us</a></li>
+            </ul>
+            <script>
+                
+function redirectToQuiz(){
+    window.location.href = "{{ url_for('quiz') }}"
+}
+
+function redirectTocourse(){
+            window.location.href = "{{ url_for('course') }}";
+        };
+function redirectTotimeline(){
+            window.location.href = "{{ url_for('timeline') }}";
+        };
+function redirectTohome(){
+            window.location.href = "{{ url_for('home') }}";
+        };
+function redirectTocolleges(){
+            window.location.href="{{url_for('college')}}";
+}
+function redirectToaboutus(){
+    window.location.href="{{url_for('aboutus')}}"
+}
+function redirectToctc(){
+    window.location.href="{{url_for('ctc')}}"
+}
+function redirectTocontact(){
+    window.location.href="{{url_for('contact')}}"
+}
+function redirectTostories(){
+    window.location.href="{{url_for('stories')}}"
+}
+function redirectTosignin(){
+    window.location.href="{{url_for('login')}}"
+}
+function redirectTosignin(){
+    window.location.href="{{url_for('login')}}"
+}
+    </script>
+    </header>
+</body>
+    <div class="container" height="50%">
+       
+        
+        <div class="content">
+            <!-- Start Screen -->
+            <div class="start-screen" id="startScreen">
+                <h2>Ready to Find Your Perfect Career?</h2>
+                <p>Our comprehensive quiz analyzes your interests, skills, work preferences, and personality traits to recommend careers that align with who you are. Take 5-10 minutes to complete this assessment and unlock personalized career insights!</p>
+                <button class="btn" onclick="startQuiz()">Start Career Quiz</button>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div class="quiz-screen" id="quizScreen">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                
+                <div class="question" id="questionContainer">
+                    <!-- Questions will be inserted here -->
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button class="btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                    <span id="questionCounter">1 of 10</span>
+                    <button class="btn" id="nextBtn" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="results-screen" id="resultsScreen">
+                
+                <div id="resultsContainer">
+                    <!-- Results will be inserted here -->
+                </div>
+                <button class="btn" onclick="restartQuiz()" style="margin-top: 2rem;">Take Quiz Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const questions = [
+            {
+                question: "What type of work environment energizes you the most?",
+                options: [
+                    {
+                        title: "Collaborative team settings",
+                        description: "Working closely with others on shared goals",
+                        scores: { people: 3, creative: 1, analytical: 1, practical: 2 }
+                    },
+                    {
+                        title: "Independent workspace",
+                        description: "Working alone with minimal supervision",
+                        scores: { analytical: 3, practical: 2, creative: 2, people: 0 }
+                    },
+                    {
+                        title: "Dynamic, fast-paced environment",
+                        description: "Constant change and new challenges",
+                        scores: { practical: 3, people: 2, creative: 2, analytical: 1 }
+                    },
+                    {
+                        title: "Quiet, focused atmosphere",
+                        description: "Deep concentration without interruptions",
+                        scores: { analytical: 3, creative: 2, practical: 1, people: 0 }
+                    }
+                ]
+            },
+            {
+                question: "Which activities do you find most engaging?",
+                options: [
+                    {
+                        title: "Solving complex problems",
+                        description: "Breaking down challenges into manageable parts",
+                        scores: { analytical: 3, practical: 2, creative: 1, people: 1 }
+                    },
+                    {
+                        title: "Creating and designing",
+                        description: "Bringing new ideas and concepts to life",
+                        scores: { creative: 3, analytical: 1, people: 1, practical: 1 }
+                    },
+                    {
+                        title: "Helping and mentoring others",
+                        description: "Supporting people to reach their potential",
+                        scores: { people: 3, creative: 1, practical: 2, analytical: 1 }
+                    },
+                    {
+                        title: "Building and implementing",
+                        description: "Creating tangible solutions and systems",
+                        scores: { practical: 3, analytical: 2, creative: 1, people: 1 }
+                    }
+                ]
+            },
+            {
+                question: "What motivates you most in your work?",
+                options: [
+                    {
+                        title: "Making a positive impact on society",
+                        description: "Contributing to the greater good",
+                        scores: { people: 3, creative: 1, practical: 2, analytical: 1 }
+                    },
+                    {
+                        title: "Intellectual challenge and learning",
+                        description: "Continuously expanding knowledge and skills",
+                        scores: { analytical: 3, creative: 2, practical: 1, people: 1 }
+                    },
+                    {
+                        title: "Financial success and stability",
+                        description: "Building wealth and security",
+                        scores: { practical: 3, analytical: 2, people: 1, creative: 1 }
+                    },
+                    {
+                        title: "Creative expression and innovation",
+                        description: "Pushing boundaries and creating something new",
+                        scores: { creative: 3, analytical: 1, people: 1, practical: 1 }
+                    }
+                ]
+            },
+            {
+                question: "How do you prefer to communicate ideas?",
+                options: [
+                    {
+                        title: "Visual presentations and graphics",
+                        description: "Using charts, images, and visual aids",
+                        scores: { creative: 3, people: 2, analytical: 1, practical: 1 }
+                    },
+                    {
+                        title: "Written reports and documentation",
+                        description: "Detailed analysis and structured writing",
+                        scores: { analytical: 3, practical: 2, creative: 1, people: 1 }
+                    },
+                    {
+                        title: "Face-to-face discussions",
+                        description: "Direct conversation and interpersonal exchange",
+                        scores: { people: 3, creative: 1, practical: 2, analytical: 1 }
+                    },
+                    {
+                        title: "Hands-on demonstrations",
+                        description: "Showing through practical examples",
+                        scores: { practical: 3, people: 2, analytical: 1, creative: 1 }
+                    }
+                ]
+            },
+            {
+                question: "What type of challenges excite you most?",
+                options: [
+                    {
+                        title: "Technical and scientific puzzles",
+                        description: "Complex problems requiring systematic analysis",
+                        scores: { analytical: 3, practical: 2, creative: 1, people: 0 }
+                    },
+                    {
+                        title: "Creative and artistic challenges",
+                        description: "Expressing ideas through innovative mediums",
+                        scores: { creative: 3, analytical: 1, people: 1, practical: 1 }
+                    },
+                    {
+                        title: "Interpersonal and social issues",
+                        description: "Helping resolve conflicts and build relationships",
+                        scores: { people: 3, creative: 2, practical: 1, analytical: 1 }
+                    },
+                    {
+                        title: "Operational and logistical problems",
+                        description: "Optimizing systems and processes",
+                        scores: { practical: 3, analytical: 2, people: 1, creative: 1 }
+                    }
+                ]
+            },
+            {
+                question: "In a team project, what role do you naturally take?",
+                options: [
+                    {
+                        title: "The analyzer and researcher",
+                        description: "Gathering data and providing insights",
+                        scores: { analytical: 3, practical: 1, creative: 1, people: 1 }
+                    },
+                    {
+                        title: "The creative visionary",
+                        description: "Coming up with innovative ideas",
+                        scores: { creative: 3, people: 1, analytical: 1, practical: 1 }
+                    },
+                    {
+                        title: "The team coordinator",
+                        description: "Managing relationships and communication",
+                        scores: { people: 3, practical: 2, creative: 1, analytical: 1 }
+                    },
+                    {
+                        title: "The implementer and organizer",
+                        description: "Making sure things get done efficiently",
+                        scores: { practical: 3, analytical: 1, people: 2, creative: 1 }
+                    }
+                ]
+            },
+            {
+                question: "What type of learning appeals to you most?",
+                options: [
+                    {
+                        title: "Theoretical concepts and principles",
+                        description: "Understanding the 'why' behind things",
+                        scores: { analytical: 3, creative: 1, practical: 1, people: 1 }
+                    },
+                    {
+                        title: "Creative exploration and experimentation",
+                        description: "Learning through artistic and innovative methods",
+                        scores: { creative: 3, analytical: 1, people: 1, practical: 1 }
+                    },
+                    {
+                        title: "Interactive and collaborative learning",
+                        description: "Learning through discussion and group work",
+                        scores: { people: 3, creative: 2, practical: 1, analytical: 1 }
+                    },
+                    {
+                        title: "Hands-on practical application",
+                        description: "Learning by doing and practicing",
+                        scores: { practical: 3, analytical: 1, people: 1, creative: 1 }
+                    }
+                ]
+            },
+            {
+                question: "What work schedule would you prefer?",
+                options: [
+                    {
+                        title: "Flexible hours, work from anywhere",
+                        description: "Freedom to choose when and where to work",
+                        scores: { creative: 2, analytical: 2, practical: 1, people: 1 }
+                    },
+                    {
+                        title: "Structured 9-5 with clear boundaries",
+                        description: "Predictable schedule and work-life balance",
+                        scores: { practical: 2, analytical: 2, people: 2, creative: 1 }
+                    },
+                    {
+                        title: "Variable schedule based on client needs",
+                        description: "Adapting to others' schedules and requirements",
+                        scores: { people: 3, practical: 2, creative: 1, analytical: 1 }
+                    },
+                    {
+                        title: "Project-based intensive periods",
+                        description: "Intense focus followed by downtime",
+                        scores: { creative: 2, analytical: 2, practical: 2, people: 1 }
+                    }
+                ]
+            },
+            {
+                question: "What type of recognition motivates you?",
+                options: [
+                    {
+                        title: "Peer recognition and professional respect",
+                        description: "Acknowledgment from experts in your field",
+                        scores: { analytical: 2, people: 2, creative: 2, practical: 1 }
+                    },
+                    {
+                        title: "Public recognition and awards",
+                        description: "Visible achievements and accolades",
+                        scores: { creative: 2, people: 2, practical: 2, analytical: 1 }
+                    },
+                    {
+                        title: "Personal satisfaction and growth",
+                        description: "Internal sense of accomplishment",
+                        scores: { analytical: 2, creative: 2, people: 1, practical: 1 }
+                    },
+                    {
+                        title: "Financial rewards and promotions",
+                        description: "Tangible career advancement",
+                        scores: { practical: 3, analytical: 2, people: 1, creative: 1 }
+                    }
+                ]
+            },
+            {
+                question: "Which skills do you want to develop further?",
+                options: [
+                    {
+                        title: "Data analysis and research methods",
+                        description: "Statistical analysis, research design, critical thinking",
+                        scores: { analytical: 3, practical: 1, creative: 1, people: 1 }
+                    },
+                    {
+                        title: "Creative and design skills",
+                        description: "Artistic abilities, innovation, aesthetic sense",
+                        scores: { creative: 3, analytical: 1, people: 1, practical: 1 }
+                    },
+                    {
+                        title: "Leadership and communication",
+                        description: "Management, public speaking, emotional intelligence",
+                        scores: { people: 3, practical: 2, creative: 1, analytical: 1 }
+                    },
+                    {
+                        title: "Technical and operational skills",
+                        description: "Process improvement, project management, efficiency",
+                        scores: { practical: 3, analytical: 2, people: 1, creative: 1 }
+                    }
+                ]
+            }
+        ];
+
+        // Career recommendations based on scores
+        const careers = {
+            analytical: [
+                {
+                    title: "Data Scientist",
+                    description: "Analyze complex datasets to extract meaningful insights and drive business decisions. Combine statistics, programming, and domain expertise to solve challenging problems.",
+                    skills: ["Python/R", "Statistics", "Machine Learning", "SQL", "Data Visualization"],
+                    salary: "$95,000 - $165,000",
+                    growth: "22% (Much faster than average)"
+                },
+                {
+                    title: "Research Scientist",
+                    description: "Conduct systematic investigations to advance knowledge in your field. Design experiments, analyze results, and contribute to scientific understanding.",
+                    skills: ["Research Methods", "Statistical Analysis", "Academic Writing", "Laboratory Skills", "Critical Thinking"],
+                    salary: "$80,000 - $140,000",
+                    growth: "8% (As fast as average)"
+                },
+                {
+                    title: "Financial Analyst",
+                    description: "Evaluate investment opportunities, analyze financial data, and provide recommendations for business decisions and portfolio management.",
+                    skills: ["Financial Modeling", "Excel", "Financial Reporting", "Market Analysis", "Risk Assessment"],
+                    salary: "$65,000 - $120,000",
+                    growth: "6% (As fast as average)"
+                }
+            ],
+            creative: [
+                {
+                    title: "UX/UI Designer",
+                    description: "Create intuitive and engaging digital experiences by designing user interfaces and optimizing user experiences across websites and applications.",
+                    skills: ["Design Software", "User Research", "Prototyping", "Visual Design", "Usability Testing"],
+                    salary: "$70,000 - $130,000",
+                    growth: "13% (Much faster than average)"
+                },
+                {
+                    title: "Marketing Creative Director",
+                    description: "Lead creative teams to develop compelling marketing campaigns, brand strategies, and visual communications that drive engagement and sales.",
+                    skills: ["Creative Strategy", "Brand Development", "Team Leadership", "Campaign Management", "Visual Arts"],
+                    salary: "$85,000 - $160,000",
+                    growth: "10% (Faster than average)"
+                },
+                {
+                    title: "Content Creator / Influencer",
+                    description: "Develop engaging content across various platforms to build audiences, tell stories, and potentially monetize your creative skills and personal brand.",
+                    skills: ["Content Creation", "Social Media", "Video Production", "Writing", "Personal Branding"],
+                    salary: "$30,000 - $100,000+",
+                    growth: "14% (Much faster than average)"
+                }
+            ],
+            people: [
+                {
+                    title: "Human Resources Manager",
+                    description: "Oversee employee relations, recruitment, training, and organizational development to create positive workplace cultures and support business objectives.",
+                    skills: ["Employee Relations", "Recruitment", "Training & Development", "Conflict Resolution", "HR Analytics"],
+                    salary: "$75,000 - $135,000",
+                    growth: "9% (Faster than average)"
+                },
+                {
+                    title: "Clinical Psychologist",
+                    description: "Help individuals overcome mental health challenges, develop coping strategies, and improve their overall psychological well-being through therapy and assessment.",
+                    skills: ["Psychological Assessment", "Therapy Techniques", "Empathy", "Communication", "Research Methods"],
+                    salary: "$80,000 - $140,000",
+                    growth: "8% (As fast as average)"
+                },
+                {
+                    title: "Sales Manager",
+                    description: "Lead sales teams, develop client relationships, and drive revenue growth through strategic sales initiatives and customer relationship management.",
+                    skills: ["Sales Strategy", "Team Leadership", "Customer Relations", "Negotiation", "Market Analysis"],
+                    salary: "$70,000 - $150,000",
+                    growth: "7% (As fast as average)"
+                }
+            ],
+            practical: [
+                {
+                    title: "Project Manager",
+                    description: "Coordinate teams, resources, and timelines to deliver projects successfully. Ensure projects meet objectives, stay within budget, and are completed on time.",
+                    skills: ["Project Planning", "Risk Management", "Team Coordination", "Budget Management", "Process Improvement"],
+                    salary: "$75,000 - $140,000",
+                    growth: "11% (Much faster than average)"
+                },
+                {
+                    title: "Operations Manager",
+                    description: "Optimize business operations, improve efficiency, and manage day-to-day activities to ensure smooth organizational functioning and goal achievement.",
+                    skills: ["Process Optimization", "Supply Chain Management", "Quality Control", "Team Management", "Data Analysis"],
+                    salary: "$70,000 - $130,000",
+                    growth: "8% (As fast as average)"
+                },
+                {
+                    title: "Software Developer",
+                    description: "Design, develop, and maintain software applications and systems that solve real-world problems and meet user needs across various industries.",
+                    skills: ["Programming Languages", "Software Architecture", "Problem Solving", "Testing", "Version Control"],
+                    salary: "$80,000 - $150,000",
+                    growth: "22% (Much faster than average)"
+                }
+            ]
+        };
+
+        let currentQuestion = 0;
+        let scores = { analytical: 0, creative: 0, people: 0, practical: 0 };
+        let answers = [];
+
+        function startQuiz() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('quizScreen').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            const container = document.getElementById('questionContainer');
+            
+            container.innerHTML = `
+                <h3>${question.question}</h3>
+                <div class="options">
+                    ${question.options.map((option, index) => `
+                        <div class="option" onclick="selectOption(${index})">
+                            <h4>${option.title}</h4>
+                            <p>${option.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            updateProgress();
+            updateNavigation();
+        }
+
+        function selectOption(optionIndex) {
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selection to clicked option
+            document.querySelectorAll('.option')[optionIndex].classList.add('selected');
+            
+            // Store answer
+            answers[currentQuestion] = optionIndex;
+        }
+
+        function nextQuestion() {
+            if (answers[currentQuestion] !== undefined) {
+                // Add scores from selected option
+                const selectedScores = questions[currentQuestion].options[answers[currentQuestion]].scores;
+                for (let category in selectedScores) {
+                    scores[category] += selectedScores[category];
+                }
+
+                currentQuestion++;
+                
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                // Subtract scores from current answer
+                if (answers[currentQuestion] !== undefined) {
+                    const selectedScores = questions[currentQuestion].options[answers[currentQuestion]].scores;
+                    for (let category in selectedScores) {
+                        scores[category] -= selectedScores[category];
+                    }
+                }
+                
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('questionCounter').textContent = `${currentQuestion + 1} of ${questions.length}`;
+        }
+
+        function updateNavigation() {
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'Get Results' : 'Next';
+        }
+
+        function showResults() {
+            document.getElementById('quizScreen').style.display = 'none';
+            document.getElementById('resultsScreen').style.display = 'block';
+
+            // Find top categories
+            const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            const topCategory = sortedScores[0][0];
+            const secondCategory = sortedScores[1][0];
+
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            // Get career recommendations
+            const primaryCareers = careers[topCategory];
+            const secondaryCareers = careers[secondCategory];
+            
+            let resultsHTML = '';
+            
+            // Primary recommendations
+            primaryCareers.forEach((career, index) => {
+                const matchPercentage = Math.round(85 + Math.random() * 10); // Simulate match percentage
+                resultsHTML += `
+                    <div class="career-card">
+                        <div class="match-percentage">${matchPercentage}% Match</div>
+                        <h3>${career.title}</h3>
+                        <p><strong>What you'll do:</strong> ${career.description}</p>
+                        <p><strong>Salary Range:</strong> ${career.salary}</p>
+                        <p><strong>Job Growth:</strong> ${career.growth}</p>
+                        <p><strong>Key Skills:</strong></p>
+                        <div class="skills-list">
+                            ${career.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Add one secondary recommendation if different from primary
+            if (secondCategory !== topCategory) {
+                const career = secondaryCareers[0];
+                const matchPercentage = Math.round(75 + Math.random() * 8);
+                resultsHTML += `
+                    <div class="career-card">
+                        <div class="match-percentage">${matchPercentage}% Match</div>
+                        <h3>${career.title}</h3>
+                        <p><strong>What you'll do:</strong> ${career.description}</p>
+                        <p><strong>Salary Range:</strong> ${career.salary}</p>
+                        <p><strong>Job Growth:</strong> ${career.growth}</p>
+                        <p><strong>Key Skills:</strong></p>
+                        <div class="skills-list">
+                            ${career.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultsContainer.innerHTML = resultsHTML;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            scores = { analytical: 0, creative: 0, people: 0, practical: 0 };
+            answers = [];
+            
+            document.getElementById('resultsScreen').style.display = 'none';
+            document.getElementById('startScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

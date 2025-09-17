@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Course to Career Flowchart</title>
+  <script src="https://d3js.org/d3.v7.min.js">import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";</script>
+  <style>
+    
+  </style>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet " href="/static/css/etc.css">
+</head>
+<body>
+<header class="header">
+  <div id="google_translate_element" align="left"></div>
+<script type="text/javascript" src="/static/js/main.js">
+  
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="header-inner">
+      <nav class="nav">
+            <div class="logo">EduPath</div>
+            <ul class="nav-menu">
+                <li class="nav-item" onclick="redirectTohome()"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item" onclick="redirectTosignin()"><a href="#" class="nav-link">Take Quiz</a></li>
+                <li class="nav-item" onclick="redirectTocourse()"><a href="#" class="nav-link">Explore Courses</a></li>
+                <li class="nav-item" onclick="redirectTocolleges()"><a href="#" class="nav-link">Find Colleges</a></li>
+                <li class="nav-item" onclick="redirectTotimeline()"><a href="#" class="nav-link">Timeline Tracker</a></li>
+                <li class="nav-item" onclick="redirectToctc()"><a href="#" class="nav-link active">C2C mapping</a></li>
+                <li class="nav-item" onclick="redirectTostories()"><a href="#" class="nav-link">Future impact Stories</a></li>
+                <li class="nav-item" onclick="redirectToaboutus()"><a href="#" class="nav-link">About Us</a></li>
+                <li class="nav-item" onclick="redirectTocontact()"><a href="#" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <script>
+function redirectToQuiz(){
+    window.location.href = "{{ url_for('quiz') }}"
+}
+
+function redirectTocourse(){
+            window.location.href = "{{ url_for('course') }}";
+        };
+function redirectTotimeline(){
+            window.location.href = "{{ url_for('timeline') }}";
+        };
+function redirectTohome(){
+            window.location.href = "{{ url_for('home') }}";
+        };
+function redirectTocolleges(){
+            window.location.href="{{url_for('college')}}";
+}
+function redirectToaboutus(){
+    window.location.href="{{url_for('aboutus')}}"
+}
+function redirectToctc(){
+    window.location.href="{{url_for('ctc')}}"
+}
+function redirectTocontact(){
+    window.location.href="{{url_for('contact')}}"
+}
+
+function redirectTostories(){
+    window.location.href="{{url_for('stories')}}"
+}
+function redirectTosignin(){
+    window.location.href="{{url_for('login')}}"
+}
+</script>
+            <!-- <div class="account-icon">👤</div> -->
+        </nav>
+<button class="account-btn" onclick="redirectTosignin()">
+        <span style="border-radius: 50%">👤</span>
+        <span class="account-label" style="display: none;"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="main-card">
+    <div class="header1" align= center>
+      <h1>Course to Career Mapping</h1>
+      <p>Click on nodes to expand/collapse</p>
+    </div>
+
+    <div class="chart-container">
+      <svg id="flowchart"></svg>
+    </div>
+  </div>
+ <div class="info-cards">
+                <div class="info-card science">
+                    <h3>Science Stream</h3>
+                    <p>Engineering, Medical, and Research opportunities</p>
+                </div>
+                <div class="info-card commerce">
+                    <h3>Commerce Stream</h3>
+                    <p>Business, Finance, and Management careers</p>
+                </div>
+                <div class="info-card arts">
+                    <h3>Arts Stream</h3>
+                    <p>Law, Psychology, and Creative professions</p>
+                </div>
+  </div>
+<footer class="footer">
+    <div class="footer-main">
+      <div class="footer-section">
+        <h3>CA Career Advisor</h3>
+        <p>Empowering students to make informed career decisions with personalized guidance, comprehensive resources, and expert support.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">🌐</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Features</h4>
+        <ul class="footer-links">
+          <li><a href="#">Take Career Quiz</a></li>
+          <li><a href="#">Find Colleges</a></li>
+          <li><a href="#">Timeline Tracker</a></li>
+          <li><a href="#">Success Stories</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <span>📧</span>
+          <div>
+            <div>Email</div>
+            <div>support@careeradvisor.in</div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span>📞</span>
+          <div>
+            <div>Helpline</div>
+            <div>1800-123-4567</div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span>📍</span>
+          <div>
+            <div>Address</div>
+            <div>New Delhi, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-subscribe" align="center">
+      <div>
+        <label for="footer-email">Stay Updated</label>
+        <div class="footer-subscribe-desc">Get the latest updates on admissions, scholarships, and career opportunities.</div>
+      </div>
+      <form class="footer-subscribe-form" id="subscribe-form" align="center" valign="middle">
+        <input type="email" id="footer-email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <span style="font-variant: small-caps;">in</span> Proudly serving students across India
+        | <span style="color: #f87171;">📞 24/7 Support Available</span>
+        | <span style="color: #facc15;">🔒 Your data is secure with us</span>
+      </div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+ <div class="footer-meta">
+      <span>Helping students since 2020 • Trusted by 10,000+ students • <a href="#" style="color: #60a5fa;">Learn more about our mission</a></span>
+      <span>© 2024 Career Advisor. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    const data = {
+      name: "Streams-",
+      children: [
+        {
+          name: "Science",
+          color: "#4facfe",
+          children: [
+            {
+              name: "Engineering",
+              children: [
+                { name: "Software Developer" },
+                { name: "Civil Engineer" },
+                { name: "Mechanical Engineer" }
+              ]
+            },
+            {
+              name: "Medical",
+              children: [
+                { name: "Doctor" },
+                { name: "Pharmacist" },
+                { name: "Nurse" }
+              ]
+            },
+            {
+              name: "B.Sc",
+              children: [
+                { name: "Researcher" },
+                { name: "Data Analyst" },
+                { name: "Lab Technician" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Commerce",
+          color: "#43e97b",
+          children: [
+            {
+              name: "B.Com",
+              children: [
+                { name: "Accountant" },
+                { name: "Tax Consultant" },
+                { name: "Auditor" }
+              ]
+            },
+            {
+              name: "Economics",
+              children: [
+                { name: "Economist" },
+                { name: "Data Analyst" },
+                { name: "Financial Advisor" }
+              ]
+            },
+            {
+              name: "MBA",
+              children: [
+                { name: "Manager" },
+                { name: "Consultant" },
+                { name: "Entrepreneur" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Arts",
+          color: "#fa709a",
+          children: [
+            {
+              name: "Law",
+              children: [
+                { name: "Lawyer" },
+                { name: "Judge" },
+                { name: "Legal Advisor" }
+              ]
+            },
+            {
+              name: "Psychology",
+              children: [
+                { name: "Counselor" },
+                { name: "HR Specialist" },
+                { name: "Therapist" }
+              ]
+            },
+            {
+              name: "Literature",
+              children: [
+                { name: "Writer" },
+                { name: "Editor" },
+                { name: "Teacher" }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    function initializeFlowchart() {
+      const svg = d3.select("#flowchart");
+      const width = 1200;
+      const height = 800;
+      const margin = { top: 40, right: 40, bottom: 40, left: 100 }; // ⬅ added left padding
+
+      svg.attr("width", width).attr("height", height);
+
+      const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      const tree = d3.tree()
+        .size([height - margin.top - margin.bottom, width - margin.left - margin.right - 200]);
+
+      const root = d3.hierarchy(data);
+      root.x0 = (height - margin.top - margin.bottom) / 2;
+      root.y0 = 0;
+
+      // collapse all children initially
+      root.children.forEach(collapse);
+
+      let i = 0;
+
+      function collapse(d) {
+        if (d.children) {
+          d._children = d.children;
+          d._children.forEach(collapse);
+          d.children = null;
+        }
+      }
+
+      function getColor(d) {
+        if (d.depth === 0) return "#667eea"; // root node color
+        let ancestor = d;
+        while (ancestor.depth > 1) ancestor = ancestor.parent; // climb up until direct child of root
+        return ancestor.data.color || "#ccc";
+      }
+
+      function update(source) {
+        const treeData = tree(root);
+        const nodes = treeData.descendants();
+        const links = treeData.links();
+
+        nodes.forEach(d => d.y = d.depth * 200);
+
+        // Nodes
+        const node = g.selectAll("g.node")
+          .data(nodes, d => d.id || (d.id = ++i));
+
+        const nodeEnter = node.enter().append("g")
+          .attr("class", "node")
+          .attr("transform", d => `translate(${source.y0},${source.x0})`)
+          .on("click", (event, d) => {
+            if (d.children) {
+              d._children = d.children;
+              d.children = null;
+            } else {
+              d.children = d._children;
+              d._children = null;
+            }
+            update(d);
+          });
+
+        nodeEnter.append("circle")
+          .attr("r", 1e-6)
+          .attr("fill", d => getColor(d));
+
+        nodeEnter.append("text")
+  .attr("dy", ".35em")
+  .attr("x", d => d.children || d._children ? -15 : 15)
+  .style("text-anchor", d => d.children || d._children ? "end" : "start")
+  .style("font-weight", d => d.depth === 1 ? "700" : "500")   // bold for Science/Commerce/Arts
+  .style("fill", d => d.depth === 1 ? "#111827" : "#2d3748")  // darker color for depth 1
+  .text(d => d.data.name);
+
+
+        const nodeUpdate = nodeEnter.merge(node);
+
+        nodeUpdate.transition()
+          .duration(600)
+          .attr("transform", d => `translate(${d.y},${d.x})`);
+
+        nodeUpdate.select("circle")
+          .transition()
+          .duration(600)
+          .attr("r", d => d.depth === 0 ? 18 : d.depth === 1 ? 14 : d.depth === 2 ? 10 : 8)
+          .attr("fill", d => getColor(d));
+
+        const nodeExit = node.exit().transition()
+          .duration(600)
+          .attr("transform", d => `translate(${source.y},${source.x})`)
+          .remove();
+
+        nodeExit.select("circle").attr("r", 1e-6);
+        nodeExit.select("text").style("fill-opacity", 1e-6);
+
+        // Links
+        const link = g.selectAll("path.link")
+          .data(links, d => d.target.id);
+
+        const linkEnter = link.enter().insert("path", "g")
+          .attr("class", "link")
+          .attr("d", d => {
+            const o = { x: source.x0, y: source.y0 };
+            return d3.linkHorizontal().x(d => d.y).y(d => d.x)({ source: o, target: o });
+          });
+
+        linkEnter.merge(link).transition()
+          .duration(600)
+          .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
+
+        link.exit().transition()
+          .duration(600)
+          .attr("d", d => {
+            const o = { x: source.x, y: source.y };
+            return d3.linkHorizontal().x(d => d.y).y(d => d.x)({ source: o, target: o });
+          })
+          .remove();
+
+        nodes.forEach(d => {
+          d.x0 = d.x;
+          d.y0 = d.y;
+        });
+      }
+
+      update(root);
+    }
+
+    document.addEventListener("DOMContentLoaded", initializeFlowchart);
+  </script>
+</body>
+</html>

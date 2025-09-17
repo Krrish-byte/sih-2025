@@ -1,0 +1,794 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Tracker - EduPath</title>
+    <link rel="stylesheet" href="/static/css/timeline.css">
+    <div id="google_translate_element" align="left"></div>
+<script type="text/javascript" src="/static/js/main.js">
+
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/20901202-0020-4223-a413-736d76bbdc79/id-preview-355c05eb--1c2d31e0-5eb9-4f65-87e6-44d1e2cafc23.lovable.app-1758034301551.png"></head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">EduPath</div>
+            <ul class="nav-menu">
+                <li class="nav-item" onclick="redirectTohome()"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item" onclick="redirectTosignin()"><a href="#" class="nav-link" style="transform: translateY(0px);">Take Quiz</a></li>
+                <li class="nav-item" onclick="redirectTocourse()"><a href="#" class="nav-link" style="transform: translateY(0px);">Explore Courses</a></li>
+                <li class="nav-item" onclick="redirectTocolleges()"><a href="#" class="nav-link" style="transform: translateY(0px);">Find Colleges</a></li>
+                <li class="nav-item" onclick="redirectTotimeline()"><a href="#" class="nav-link active">Timeline Tracker</a></li>
+                <li class="nav-item" onclick="redirectToctc()"><a href="#" class="nav-link" style="transform: translateY(0px);">C2C mapping</a></li>
+                <li class="nav-item" onclick="redirectTostories()"><a href="#" class="nav-link" style="transform: translateY(0px);">Future impact Stories</a></li>
+                <li class="nav-item" onclick="redirectToaboutus()"><a href="#" class="nav-link">About Us</a></li>
+                <li class="nav-item" onclick="redirectTocontact()"><a href="#" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="account-section">
+                <span onclick="redirectTosignin()">👤</span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+<script>
+function redirectToQuiz(){
+    window.location.href = "{{ url_for('quiz') }}"
+}
+
+function redirectTocourse(){
+            window.location.href = "{{ url_for('course') }}";
+        };
+function redirectTotimeline(){
+            window.location.href = "{{ url_for('timeline') }}";
+        };
+function redirectTohome(){
+            window.location.href = "{{ url_for('home') }}";
+        };
+function redirectTocolleges(){
+            window.location.href="{{url_for('college')}}";
+}
+function redirectToaboutus(){
+    window.location.href="{{url_for('aboutus')}}"
+}
+function redirectToctc(){
+    window.location.href="{{url_for('ctc')}}"
+}
+function redirectTocontact(){
+    window.location.href="{{url_for('contact')}}"
+}
+function redirectTostories(){
+    window.location.href="{{url_for('stories')}}"
+}
+function redirectTosignin(){
+    window.location.href="{{url_for('login')}}"
+}
+</script>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1 class="page-title">Timeline Tracker</h1>
+            <p class="page-description">
+                Stay on top of important deadlines and never miss an opportunity. Track admissions, 
+                exams, and scholarship deadlines all in one place.
+            </p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number blue">0</div>
+                <div class="stat-label">Upcoming Deadlines</div>
+            </div>
+            <div class="stat-card" style="transform: translateY(0px); box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div id="events-tracked-count" class="stat-number green">0</div>
+                 <div class="stat-label">Events Tracked</div>
+             </div>
+            <div class="stat-card" style="transform: translateY(0px); box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="stat-number orange">0</div>
+                <div class="stat-label">Urgent This Week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number purple">2</div>
+                <div class="stat-label">Active Scholarships</div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" fdprocessedid="qmbi3">All Events</button>
+            <button class="filter-tab" fdprocessedid="w6o26q">Admissions</button>
+            <button class="filter-tab" fdprocessedid="ihhic6">Exams</button>
+            <button class="filter-tab" fdprocessedid="cslui">Scholarships</button>
+        </div>
+
+        <!-- Events Container -->
+        <div class="events-container">
+            <!-- DU Undergraduate Admissions -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">📚</span>
+                            DU Undergraduate Admissions
+                        </h3>
+                        <button class="track-btn" fdprocessedid="iffylr" style="background: none; color: rgb(107, 114, 128); border-color: rgb(229, 231, 235);">
+                            <span>🔔</span> Track</button>
+                    </div>
+                    <div class="organization">Delhi University</div>
+                    <div class="status-badges">
+                        <span class="badge active">active</span>
+                        <span class="badge">admission</span>
+                    </div>
+                    <p class="event-description">
+                        Online application for undergraduate courses at Delhi University.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="key-dates">
+                        <h4>Key Dates:</h4>
+                        <div class="date-item">
+                            <span class="date-icon">📅</span>
+                            Start: 05/06/2024
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Fee: ₹250</div>
+                    <button class="more-info-btn" fdprocessedid="im60f">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- JEE Main Session 2 Registration -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">📚</span>
+                            JEE Main Session 2 Registration
+                        </h3>
+                        <button class="track-btn" fdprocessedid="eos85u" style="background: none; color: rgb(107, 114, 128); border-color: rgb(229, 231, 235);">
+                            <span>🔔</span> Track</button>
+                    </div>
+                    <div class="organization">NTA</div>
+                    <div class="status-badges">
+                        <span class="badge upcoming">upcoming</span>
+                        <span class="badge exam">exam</span>
+                    </div>
+                    <p class="event-description">
+                        Registration for JEE Main 2024 Session 2 examination.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="key-dates">
+                        <h4>Key Dates:</h4>
+                        <div class="date-item">
+                            <span class="date-icon">📅</span>
+                            Start: 04/02/2024
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Fee: ₹650</div>
+                    <button class="more-info-btn" fdprocessedid="c4nkj">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- NEET UG Application -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">📚</span>
+                            NEET UG Application
+                        </h3>
+                        <button class="track-btn" fdprocessedid="pj2i7m" style="background: none; color: rgb(107, 114, 128); border-color: rgb(229, 231, 235);">
+                            <span>🔔</span> Track</button>
+                    </div>
+                    <div class="organization">NTA</div>
+                    <div class="status-badges">
+                        <span class="badge upcoming">upcoming</span>
+                        <span class="badge exam">exam</span>
+                    </div>
+                    <p class="event-description">
+                        Application for NEET UG 2024 for medical college admissions.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="key-dates">
+                        <h4>Key Dates:</h4>
+                        <div class="date-item">
+                            <span class="date-icon">📅</span>
+                            Start: 10/02/2024
+                        </div>
+                        <div class="date-item">
+                            <span class="date-icon">⏰</span>
+                            Deadline: 20/03/2024
+                        </div>
+                    </div>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            12th PCB Certificate
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Aadhaar Card
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Photo
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Fee: ₹1600</div>
+                    <button class="more-info-btn" fdprocessedid="eb2l28">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CBSE Board Result Declaration -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">✅</span>
+                            CBSE Board Result Declaration
+                        </h3>
+                        <button class="track-btn" fdprocessedid="ofw2i">
+                            <span>🔔</span>
+                            Track
+                        </button>
+                    </div>
+                    <div class="organization">CBSE</div>
+                    <div class="status-badges">
+                        <span class="badge completed">completed</span>
+                        <span class="badge result">result</span>
+                    </div>
+                    <p class="event-description">
+                        Class 12 board examination results declaration.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="key-dates">
+                        <h4>Key Dates:</h4>
+                        <div class="date-item">
+                            <span class="date-icon">📅</span>
+                            Start: 12/05/2024
+                        </div>
+                        <div class="date-item">
+                            <span class="date-icon">⏰</span>
+                            Deadline: 12/05/2024
+                        </div>
+                    </div>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Roll Number
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            School Code
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Fee: Free</div>
+                    <button class="more-info-btn" fdprocessedid="26mud">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- National Merit Scholarship -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">🏆</span>
+                            National Merit Scholarship
+                        </h3>
+                        <button class="track-btn" fdprocessedid="9ea4n5i">
+                            <span>🔔</span>
+                            Track
+                        </button>
+                    </div>
+                    <div class="organization">Government of India</div>
+                    <div class="status-badges">
+                        <span class="badge upcoming">upcoming</span>
+                        <span class="badge">scholarship</span>
+                    </div>
+                    <p class="event-description">
+                        Merit-based scholarship for outstanding academic performance.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Income Certificate
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Bank Details
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Amount: ₹12,000/year</div>
+                    <button class="more-info-btn" fdprocessedid="rdzcri">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- State Government Scholarship -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">🏆</span>
+                            State Government Scholarship
+                        </h3>
+                        <button class="track-btn" fdprocessedid="p3ip6o">
+                            <span>🔔</span>
+                            Track
+                        </button>
+                    </div>
+                    <div class="organization">State Government</div>
+                    <div class="status-badges">
+                        <span class="badge upcoming">upcoming</span>
+                        <span class="badge">scholarship</span>
+                    </div>
+                    <p class="event-description">
+                        State-sponsored scholarship for eligible students.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Caste Certificate
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Admission Proof
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Amount: ₹25,000/year</div>
+                    <button class="more-info-btn" fdprocessedid="uim3ar">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CUET Examination -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">📚</span>
+                            CUET Examination
+                        </h3>
+                        <button class="track-btn" fdprocessedid="4asjs">
+                            <span>🔔</span>
+                            Track
+                        </button>
+                    </div>
+                    <div class="organization">NTA</div>
+                    <div class="status-badges">
+                        <span class="badge upcoming">upcoming</span>
+                        <span class="badge exam">exam</span>
+                    </div>
+                    <p class="event-description">
+                        Common University Entrance Test for central universities.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="key-dates">
+                        <h4>Key Dates:</h4>
+                        <div class="date-item">
+                            <span class="date-icon">📅</span>
+                            Start: 15/05/2024
+                        </div>
+                        <div class="date-item">
+                            <span class="date-icon">⏰</span>
+                            Deadline: 30/05/2024
+                        </div>
+                    </div>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Admit Card
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Photo ID
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Application Form
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Fee: ₹650</div>
+                    <button class="more-info-btn" fdprocessedid="it0glk">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- State CET Examination -->
+            <div class="event-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;">
+                <div class="event-header">
+                    <div class="event-title-row">
+                        <h3 class="event-title">
+                            <span class="event-icon">📚</span>
+                            State CET Examination
+                        </h3>
+                        <button class="track-btn" fdprocessedid="ldm2zl">
+                            <span>🔔</span>
+                            Track
+                        </button>
+                    </div>
+                    <div class="organization">State Board</div>
+                    <div class="status-badges">
+                        <span class="badge upcoming">upcoming</span>
+                        <span class="badge exam">exam</span>
+                    </div>
+                    <p class="event-description">
+                        State Common Entrance Test for engineering admissions.
+                    </p>
+                </div>
+                <div class="event-body">
+                    <div class="key-dates">
+                        <h4>Key Dates:</h4>
+                        <div class="date-item">
+                            <span class="date-icon">📅</span>
+                            Start: 20/04/2024
+                        </div>
+                        <div class="date-item">
+                            <span class="date-icon">⏰</span>
+                            Deadline: 25/04/2024
+                        </div>
+                    </div>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Hall Ticket
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Valid ID
+                        </div>
+                        <div class="requirement-item">
+                            <span class="check-icon">✓</span>
+                            Stationery
+                        </div>
+                    </div>
+                </div>
+                <div class="event-footer">
+                    <div class="fee-info">Fee: ₹500</div>
+                    <button class="more-info-btn" fdprocessedid="w1u3br">
+                        More Info
+                        <span>↗</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Never Miss Another Deadline</h2>
+            <p class="cta-description">
+                Enable notifications to get reminded about important deadlines and updates. We'll send you 
+                timely alerts so you can focus on your preparation.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">
+                    <span>🔔</span>
+                    Enable Notifications
+                </a>
+                <a href="#" class="btn-secondary">
+                    <span>🏫</span>
+                    Explore Colleges
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CA Career Advisor</h3>
+                <p>Empowering students to make informed career decisions with personalized guidance, comprehensive resources, and expert support.</p>
+                <div class="social-icons">
+                    <div class="social-icon">f</div>
+                    <div class="social-icon">t</div>
+                    <div class="social-icon">in</div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Take Career Quiz</a></li>
+                    <li><a href="#">Find Colleges</a></li>
+                    <li><a href="#">Timeline Tracker</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <div>
+                        <strong>Email</strong><br>
+                        support@careeradvisor.in
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <strong>Helpline</strong><br>
+                        1800-123-4567
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Address</strong><br>
+                        New Delhi, India
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="newsletter">
+            <h3>Stay Updated</h3>
+            <p>Get the latest updates on admissions, scholarships, and career opportunities.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" fdprocessedid="0ohwjn">
+                <button type="submit" class="newsletter-btn" fdprocessedid="boxv7">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div>© 2024 Career Advisor. All rights reserved.</div>
+            <div class="footer-info">
+                <div class="footer-info-item">
+                    <span>🇮🇳</span>
+                    <span>Proudly serving students across India</span>
+                </div>
+                <div class="footer-info-item">
+                    <span>📞</span>
+                    <span>24/7 Support Available</span>
+                </div>
+                <div class="footer-info-item">
+                    <span>🔒</span>
+                    <span>Your data is secure with us</span>
+                </div>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.9rem;">
+                Helping students since 2020 • Trusted by 10,000+ students
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const eventCards = document.querySelectorAll('.event-card');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    const filter = this.textContent.toLowerCase();
+                    
+                    // Show/hide events based on filter
+                    eventCards.forEach(card => {
+                        if (filter === 'all events') {
+                            card.style.display = 'block';
+                        } else {
+                            const badges = card.querySelectorAll('.badge');
+                            let hasMatchingBadge = false;
+                            
+                            badges.forEach(badge => {
+                                if (badge.textContent.toLowerCase().includes(filter.replace('s', ''))) {
+                                    hasMatchingBadge = true;
+                                }
+                            });
+                            
+                            card.style.display = hasMatchingBadge ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+
+            // Track button functionality
+            (function() {
+                const eventsTrackedEl = document.getElementById('events-tracked-count');
+                const trackButtons = document.querySelectorAll('.track-btn');
+
+                // helper to set count safely
+                function changeEventsTracked(delta) {
+                    const current = parseInt(eventsTrackedEl.textContent || '0', 10);
+                    const next = Math.max(0, current + delta);
+                    eventsTrackedEl.textContent = String(next);
+                }
+
+                // initialize count from any pre-tracked buttons (defensive)
+                let initial = 0;
+                trackButtons.forEach(b => {
+                    if (b.dataset.tracked === 'true') initial++;
+                });
+                eventsTrackedEl.textContent = String(initial);
+
+                // click handler
+                trackButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const isTracked = this.dataset.tracked === 'true';
+
+                        if (!isTracked) {
+                            // set to tracking
+                            this.dataset.tracked = 'true';
+                            this.innerHTML = '<span>🔔</span> Tracking';
+                            this.style.background = '#dcfce7';
+                            this.style.color = '#166534';
+                            this.style.borderColor = '#166534';
+                            changeEventsTracked(1);
+                        } else {
+                            // unset tracking
+                            this.dataset.tracked = 'false';
+                            this.innerHTML = '<span>🔔</span> Track';
+                            this.style.background = 'none';
+                            this.style.color = '#6b7280';
+                            this.style.borderColor = '#e5e7eb';
+                            changeEventsTracked(-1);
+                        }
+                    });
+                });
+            })();
+
+            // Newsletter form
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('.newsletter-input').value;
+                if (email) {
+                    alert('Thank you for subscribing! We\'ll keep you updated.');
+                    this.reset();
+                }
+            });
+
+            // CTA buttons
+            const enableNotificationsBtn = document.querySelector('.btn-primary');
+            enableNotificationsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Notifications enabled! You\'ll receive updates about important deadlines.');
+            });
+
+            // More info buttons
+            const moreInfoButtons = document.querySelectorAll('.more-info-btn');
+            moreInfoButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Detailed information about this event would be shown here.');
+                });
+            });
+
+            // Add hover effects to navigation links
+            const navLinks = document.querySelectorAll('.nav-link:not(.active)');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.event-card, .stat-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                });
+            });
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all event cards for animation
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+
+
+
+	
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
