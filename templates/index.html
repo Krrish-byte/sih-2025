@@ -8,9 +8,13 @@
 <body>
     <!-- Header -->
     <header class="header" style="background: white; backdrop-filter: none;">
-        
-        <div id="google_translate_element" align="left" height="2px"></div>
-<script type="text/javascript" src="/static/js/main.js">
+        <div id="google_translate_element" align="left" ></div>
+<script type="text/javascript" >
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {pageLanguage: 'en', includedLanguages: 'hi,pa,kn,ta,mr,ur'},'google_translate_element'
+    );
+  }
   
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -76,7 +80,7 @@ function redirectTosignin(){
                 <h1>Your Personalized Career &amp; Education Advisor</h1>
                 <p>Confused about your next step after Class 10 or 12? Get personalized course &amp; career suggestions, find nearby government colleges, and track important deadlines.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary arrow" style="transform: translateY(0px);" onclick="redirectToQuiz()">Take Free Career Quiz</a>
+                    <a href="#" class="btn-primary arrow" style="transform: translateY(0px);" onclick="redirectTosignin()">Take Free Career Quiz</a>
                     <a href="#" class="btn-outline" style="transform: translateY(0px);" onclick="redirectTocolleges()">📍 Explore Government Colleges</a>
                     <a href="#" class="btn-outline" style="transform: translateY(0px);" onclick="redirectTostories()">👥 See Success Stories</a>
                 </div>
@@ -119,21 +123,21 @@ function redirectTosignin(){
                     <div class="feature-icon icon-green">🎯</div>
                     <h3 class="feature-title">Career Path Mapping</h3>
                     <p class="feature-description">Discover detailed career roadmaps with step-by-step guidance, required skills, expected salaries, and growth opportunities in your chosen field.</p>
-                    <a href="#" class="learn-more arrow">Learn More</a>
+                    <a href="#" class="learn-more arrow" onclick="redirectToctc()">Learn More</a>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon icon-purple">📍</div>
                     <h3 class="feature-title">Nearby Government Colleges</h3>
                     <p class="feature-description">Find government colleges near you with detailed information about courses, admission criteria, fees, placement records, and application deadlines.</p>
-                    <a href="#" class="learn-more arrow">Learn More</a>
+                    <a href="#" class="learn-more arrow" onclick="redirectTocolleges()">Learn More</a>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon icon-orange">📅</div>
                     <h3 class="feature-title">Timeline Tracker</h3>
                     <p class="feature-description">Stay on top of important deadlines with our comprehensive timeline tracker for admissions, applications, exams, and scholarship opportunities.</p>
-                    <a href="#" class="learn-more arrow">Learn More</a>
+                    <a href="#" class="learn-more arrow" onclick="redirectTotimeline()">Learn More</a>
                 </div>
             </div>
         </div>
@@ -160,7 +164,7 @@ function redirectTosignin(){
                     <div class="step-number">1</div>
                     <h3 class="step-title" >Take Aptitude &amp; Interest Quiz</h3>
                     <p class="step-description">Complete our comprehensive assessment that evaluates your skills, interests, and personality to understand your strengths.</p>
-                    <a href="#" class="step-btn arrow" onclick="redirectToQuiz()">Start Step 1</a>
+                    <a href="#" class="step-btn arrow" onclick="redirectTosignin()">Start Step 1</a>
                 </div>
 
                 <div class="process-step">
@@ -184,7 +188,7 @@ function redirectTosignin(){
                     <div class="step-number">4</div>
                     <h3 class="step-title">Track Important Deadlines and Apply</h3>
                     <p class="step-description">Stay organized with our timeline tracker and never miss important application deadlines, exam dates, or scholarship opportunities.</p>
-                    <a href="#" class="step-btn arrow">Start Step 4</a>
+                    <a href="#" class="step-btn arrow" onclick="redirectTocolleges()">Start Step 4</a>
                 </div>
             </div>
         </div>
@@ -194,9 +198,9 @@ function redirectTosignin(){
     <section class="start-journey">
         <div class="journey-card">
             <div class="check-icon">✓</div>
-            <h2 class="journey-title" onclick="redirectToQuiz()">Start Your Journey Today</h2>
+            <h2 class="journey-title" onclick="redirectTosignin()">Start Your Journey Today</h2>
             <p class="journey-description">Take the first step towards a successful career with our free assessment.</p>
-            <a href="#" class="btn-primary arrow" onclick="redirectToQuiz()">Begin Assessment</a>
+            <a href="#" class="btn-primary arrow" onclick="redirectTosignin()">Begin Assessment</a>
         </div>
     </section>
 
@@ -366,7 +370,7 @@ function redirectTosignin(){
             <div class="footer-section">
                 <h3>Features</h3>
                 <ul class="footer-links">
-                    <li><a href="#" onclick="redirectToQuiz()">Take Career Quiz</a></li>
+                    <li><a href="#" onclick="redirectTosignin()">Take Career Quiz</a></li>
                     <li><a href="#" onclick="redirectTocolleges()">Find Colleges</a></li>
                     <li><a href="#" onclick="redirectTotimeline()">Timeline Tracker</a></li>
                     <li><a href="#" onclick="redirectTostories()">Success Stories</a></li>
