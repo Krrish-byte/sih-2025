@@ -28,6 +28,8 @@
                 <li class="nav-item" onclick="redirectTostories()"><a href="#" class="nav-link">Future impact Stories</a></li>
                 <li class="nav-item" onclick="redirectToaboutus()"><a href="#" class="nav-link">About Us</a></li>
                 <li class="nav-item" onclick="redirectTocontact()"><a href="#" class="nav-link">Contact Us</a></li>
+                <li class="nav-item" onclick="redirectTochatbot()" ><a href="#" class="nav-link">Chatbot</a></li>
+                
             </ul>
             <script>
                 
@@ -65,6 +67,10 @@ function redirectTosignin(){
 function redirectTosignin(){
     window.location.href="{{url_for('login')}}"
 }
+function redirectTochatbot(){
+    window.location.href="{{url_for('chatbot')}}"
+}
+
     </script>
     </header>
 </body>

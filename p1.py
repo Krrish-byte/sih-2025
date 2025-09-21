@@ -1,7 +1,18 @@
-from flask import Flask, render_template,request,url_for,redirect
+from flask import Flask, render_template,request,url_for,redirect,jsonify
+from flask_cors import CORS
+import os
+from langchain.memory import ConversationBufferMemory
+import logging
+from gemini_setup import get_gemini_response
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s} %(message)s',
+    handlers=[logging.StreamHandler()]
+)
 
 app = Flask(__name__)
-
+CORS(app) 
 @app.route("/")
 def home():
     return render_template("index.html") 
@@ -44,6 +55,13 @@ def contact():
 @app.route("/successtory")
 def stories():
     return render_template("success.html")
+
+@app.route('/s1q')
+def chatbot():
+    return redirect("https://niraj-12879.app.n8n.cloud/webhook/4a410a85-84c3-4875-8718-6a45ac59b10e/chat")
+
+
+
 
 
 

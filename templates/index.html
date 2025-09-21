@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/static/css/index.css">
 <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/357caa67-29b8-48f9-9082-b0ee70d62e05/id-preview-fad35c32--b153f237-3f36-4653-bd90-a67f1a307c27.lovable.app-1757853917393.png"></head>
 <body>
+    
+   
+
     <!-- Header -->
     <header class="header" style="background: white; backdrop-filter: none;">
         <div id="google_translate_element" align="left" ></div>
@@ -15,7 +18,8 @@
       {pageLanguage: 'en', includedLanguages: 'hi,pa,kn,ta,mr,ur'},'google_translate_element'
     );
   }
-  
+
+
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
@@ -23,7 +27,7 @@
             <div class="logo">EduPath</div>
             <ul class="nav-menu">
                 <li class="nav-item" onclick="redirectTohome()"><a href="#" class="nav-link">Home</a></li>
-                <li class="nav-item" onclick="redirectTosignin()"><a href="#" class="nav-link">Take Quiz</a></li>
+                <li class="nav-item" onclick="redirectToQuiz()"><a href="#" class="nav-link">Take Quiz</a></li>
                 <li class="nav-item" onclick="redirectTocourse()"><a href="#" class="nav-link" >Explore Courses</a></li>
                 <li class="nav-item" onclick="redirectTocolleges()"><a href="#" class="nav-link">Find Colleges</a></li>
                 <li class="nav-item" onclick="redirectTotimeline()"><a href="#" class="nav-link">Timeline Tracker</a></li>
@@ -31,6 +35,7 @@
                 <li class="nav-item" onclick="redirectTostories()"><a href="#" class="nav-link">Future impact Stories</a></li>
                 <li class="nav-item" onclick="redirectToaboutus()"><a href="#" class="nav-link">About Us</a></li>
                 <li class="nav-item" onclick="redirectTocontact()" ><a href="#" class="nav-link">Contact Us</a></li>
+                <li class="nav-item" onclick="redirectTochatbot()" ><a href="#" class="nav-link">Chatbot</a></li>
             </ul>
             <script>
                 
@@ -66,6 +71,10 @@ function redirectTostories(){
 
 function redirectTosignin(){
     window.location.href="{{url_for('login')}}"
+}
+
+function redirectTochatbot(){
+    window.location.href="{{url_for('chatbot')}}"
 }
 
     </script>
@@ -493,8 +502,12 @@ function redirectTosignin(){
 </svg>
 
 
+
+
+
 	<button id="lovable-badge-close" style="position: absolute; top: -2px; right: 5px; cursor: pointer; font-size: 14px; color: #A1A1AA;">×</button>
 </a>
+<!-- put this anywhere inside your <body>, e.g. at the very end -->
 
 
 </body></html>
