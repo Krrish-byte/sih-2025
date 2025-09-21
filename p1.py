@@ -1,18 +1,10 @@
 from flask import Flask, render_template,request,url_for,redirect,jsonify
-from flask_cors import CORS
-import os
-from langchain.memory import ConversationBufferMemory
-import logging
-from gemini_setup import get_gemini_response
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s} %(message)s',
-    handlers=[logging.StreamHandler()]
-)
+
+
 
 app = Flask(__name__)
-CORS(app) 
+
 @app.route("/")
 def home():
     return render_template("index.html") 
